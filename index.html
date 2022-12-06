@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table style="text-align: center">
+        <tr>
+            <th>Amount</th>
+            <th>From Currency</th>
+            <th colspan="2">To Currency</th>
+        </tr>
+        <tr>
+            <td><input id="so" type="text"></td>
+            <td>
+                <select onchange="getFrom(event)">
+                    <option id="vietnam" value="VN">viet nam</option>
+                    <option id="usa" value="USA">USA</option>
+                </select>
+            </td>
+            <td>
+                <select onchange="getTo(event)">
+                    <option id="USD" value="USD">USD</option>
+                    <option id="VND" value="VND">VND</option>
+                </select>
+            </td>
+            <td></td>
+            <td> <button type="button" onclick="total()">Đổi</button></td>
+        </tr>
+    </table>
+    <p id="ketqua">ketqua</p>
+    <script>
+        let from = "VN"
+        let to = "USD"
+        function getFrom(event){
+            from= event.target.value
+        }
+        function getTo(event){
+            to= event.target.value
+        }
+        function total() {
+            let so = +document.getElementById('so').value
+            if (from == 'VN'&& to== 'USD'){
+                document.getElementById('ketqua').innerHTML = 'ketqua:' +so / 23000
+            }
+            else if (from == 'USA'&& to=='VND'){
+                document.getElementById('ketqua').innerHTML = 'ketqua:' +so * 23000
+            }
+        }
+    </script>
+</body>
+</html>
